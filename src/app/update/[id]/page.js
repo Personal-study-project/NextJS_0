@@ -11,7 +11,7 @@ export default function Update() {
   const id = params.id;
 
   useEffect(() => {
-    fetch(`http://localhost:9999/topics/` + id)
+    fetch(process.env.NEXT_PUBLIC_API_URL + "topics/" + id)
       .then((res) => res.json())
       .then((result) => {
         setTitle(result.title);
@@ -33,7 +33,7 @@ export default function Update() {
           body: JSON.stringify({ title, body }),
         };
         // 캐싱 때문에 root 의 layout에 추가가 안된다. 캐시를 지우자
-        fetch("http://localhost:9999/topics/" + id, options)
+        fetch(process.env.NEXT_PUBLIC_API_URL + "topics/" + id, options)
           .then((res) => res.json())
           .then((result) => {
             const lastid = result.id;
@@ -43,17 +43,24 @@ export default function Update() {
       }}
     >
       <p>
-        <input type="text" name="title" placeholder="title" value={title}
-            onChange={(e) => setTitle(e.target.value)}
+        <input
+          type="text"
+          name="title"
+          placeholder="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </p>
       <p>
-        <textarea name="body" placeholder="body" value={body}
-            onChange={(e) => setBody(e.target.value)}
+        <textarea
+          name="body"
+          placeholder="body"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
         ></textarea>
       </p>
       <p>
-        <input type="submit" value="create" />
+        <input type="submit" value="update" />
       </p>
     </form>
   );

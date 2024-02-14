@@ -9,7 +9,7 @@ export const metadata = {
 
 // 캐시로 인해 create 했을때 업데이트가 안된다. 그래서 revalidate:0 으로 캐시를 지운다.
 export default async function RootLayout({ children }) {
-  const res = await fetch("http://localhost:9999/topics", {
+  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "topics", {
     next: { revalidate: 0 },
   });
   const topics = await res.json();

@@ -19,15 +19,19 @@ export function Control() {
             <Link href={"/update/" + id}>update</Link>
           </li>
           <li>
-            <input type="button" value="delete" onClick={() => {
-              const options = {method: 'DELETE'}
-              fetch('http://localhost:9999/topics/' + id, options)
-              .then(res => res.json())
-              .then(data => {
-                router.push('/');
-                router.refresh();
-              })
-            }}></input>
+            <input
+              type="button"
+              value="delete"
+              onClick={() => {
+                const options = { method: "DELETE" };
+                fetch(process.env.NEXT_PUBLIC_API_URL + 'topics/' + id, options)
+                  .then((res) => res.json())
+                  .then((data) => {
+                    router.push("/");
+                    router.refresh();
+                  });
+              }}
+            ></input>
           </li>
         </>
       ) : null}

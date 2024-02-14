@@ -19,10 +19,9 @@ export default function Create() {
           body: JSON.stringify({ title, body }),
         };
         // 캐싱 때문에 root 의 layout에 추가가 안된다. 캐시를 지우자
-        fetch("http://localhost:9999/topics", options)
+        fetch(process.env.NEXT_PUBLIC_API_URL + "topics", options)
           .then((res) => res.json())
           .then((result) => {
-            // console.log(result);
             const lastid = result.id;
             router.push(`/read/${lastid}`);
             router.refresh();
