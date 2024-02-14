@@ -1,12 +1,14 @@
-'use client';
+// 사용자와 상호작용하지 않는다. SSR
+// 'use client';
 
-
-export default function Read(props) {
+export default async function Read(props) {
+    const res = await fetch(`http://localhost:9999/topics/${props.params.id}`);
+    const topic = await res.json();
     console.log(props);
     return (
         <>
-            <h2>Read!! hahaha</h2>
-            paramter : {props.params.id}
+            <h2>{topic.title}</h2>
+            {topic.body}
         </>
     )
 }
