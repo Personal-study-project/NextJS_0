@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import { Control } from "./Control";
 
 export const metadata = {
   title: "Next App",
@@ -7,7 +8,6 @@ export const metadata = {
 };
 
 // 캐시로 인해 create 했을때 업데이트가 안된다. 그래서 revalidate:0 으로 캐시를 지운다.
-// console.log('RootLayout', topics);
 export default async function RootLayout({ children }) {
   const res = await fetch("http://localhost:9999/topics", {
     next: { revalidate: 0 },
@@ -21,7 +21,6 @@ export default async function RootLayout({ children }) {
         </h1>
         <ol>
           {topics.map((topic) => {
-            console.log(topic);
             return (
               <li key={topic.id}>
                 <Link href={`/read/${topic.id}`}>{topic.title}</Link>
@@ -30,17 +29,7 @@ export default async function RootLayout({ children }) {
           })}
         </ol>
         {children}
-        <ul>
-          <li>
-            <Link href="/create">create</Link>
-          </li>
-          <li>
-            <Link href="/update/1">update</Link>
-          </li>
-          <li>
-            <input type="button" value="delete"></input>
-          </li>
-        </ul>
+        <Control />
       </body>
     </html>
   );
