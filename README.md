@@ -1,11 +1,11 @@
-This is a Project that I follow up [YOUTUBE class](https://www.youtube.com/watch?v=9KOaR6QMb9A&list=PLuHgQVnccGMCwxXsQuEoG-JJ7RlwtNdwJ&index=1)
+✅ 다음 강의를 보며 학습하고 정리한 프로젝트입니다 : [YOUTUBE 강의](https://www.youtube.com/watch?v=9KOaR6QMb9A&list=PLuHgQVnccGMCwxXsQuEoG-JJ7RlwtNdwJ&index=1)
 
-## How to consist Directory
+## 디렉토리 구조
 
-### Memo Directory
+### app
 
-There is simple memo that I've studied while I follow video
+강의를 보며 작업한 코드가 있습니다.
 
-### App
+### memo
 
-There is project that I code
+강의를 보며 간단하게 정리한 메모가 있습니다.
